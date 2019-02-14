@@ -2,13 +2,15 @@ package controller;
 
 import java.util.ArrayList;
 
+import model.Meowth;
 import model.Pokemon;
+import view.PokedexFrame;
 
 public class PokedexController
 {
 	
 	private ArrayList<Pokemon> pokemonList;
-	private PodexFrame appFrame;
+	private PokedexFrame appFrame;
 	
 	public PokedexController()
 	{
@@ -16,7 +18,7 @@ public class PokedexController
 		addPokemon();
 		appFrame = new PokedexFrame(this);
 	}
-	public void addPokeon()
+	public void addPokemon()
 	{
 		pokemonList.add(new Meowth());
 	}
@@ -46,6 +48,17 @@ public class PokedexController
 			names[index] = pokemonList.get(index).getName();
 		}
 		return names;
-		,
+	}
+	public boolean isInt(String number)
+	{
+		boolean isValid = false;
+		
+		return isValid;
+	}
+	public boolean isDouble(String number)
+	{
+		boolean isValid = false;
+		
+		return isValid;
 	}
 }
