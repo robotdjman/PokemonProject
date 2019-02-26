@@ -2,6 +2,10 @@ package controller;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
+import java.io.*;
+
 import model.Meowth;
 import model.Pokemon;
 import model.Squirtle;
@@ -12,6 +16,7 @@ public class PokedexController
 	
 	private ArrayList<Pokemon> pokemonList;
 	private PokedexFrame appFrame;
+	private String saveFile = "backup.pokemon";
 	
 	public PokedexController()
 	{
@@ -62,5 +67,41 @@ public class PokedexController
 		boolean isValid = false;
 		
 		return isValid;
+	}
+	public void savePokedex()
+	{
+		try
+		{
+			FileOutputStream saveStream = new FileOutputStream(saveFile);
+			ObjectOutputStream output = new ObjectOutputStream(saveStream);
+			output.writeObject(pokemonList);
+			output.close();
+			saveStream.close();
+		}
+		catch(IOException error)
+		{
+			JOptionPane.showMessageDialog(appFrame, error.getMessage(), "File Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	private void loadPokedex()
+	{
+		try
+		{
+			ArrayList<Pokemon> saved = new ArrayList<Pokemon>();
+			FileInputStream inputStream = new FileInputStream(saveFile);
+			ObjectInputStream input = new ObjectInputStream(inputStream);
+			saved = (ArrayList<pokemon>) input.readObject();
+			input.close();
+			inputStream.close();
+			pokemonList = saved;
+		}
+		catch(IOException error)
+		{
+			JOptionPane.showMessageDialog(appFrame, "No Save file ", "Loading Pokemon", JOptionPane.ERROR_MESSAGE);
+		}
+		catch(ClassNotFoundException pokemonError)
+		{
+			JOptionPane.showMessageDialog(appFrame, pokemonError.getMessage(), "Type Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 }
