@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import model.Meowth;
 import model.Pokemon;
+import model.Squirtle;
 import view.PokedexFrame;
 
 public class PokedexController
@@ -21,6 +22,7 @@ public class PokedexController
 	public void addPokemon()
 	{
 		pokemonList.add(new Meowth());
+		pokemonList.add(new Squirtle());
 	}
 	public void start()
 	{
