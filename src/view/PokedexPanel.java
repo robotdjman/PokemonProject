@@ -42,7 +42,7 @@ public class PokedexPanel extends JPanel
 	{
 		super();
 		
-		this.pokemonIcon = new ImageIcon(getClass().getResource("/PokemonProject/src/view/images/Voltorb.png"));
+		this.pokemonIcon = new ImageIcon(getClass().getResource("/view/images/Pokeball.png"));
 		
 		appLayout = new SpringLayout();
 		this.pokeController = appController;
@@ -54,19 +54,39 @@ public class PokedexPanel extends JPanel
 		numberField = new JTextField("0");
 		nameField = new JTextField("My pokename");
 		evolveField = new JTextField("false");
+		appLayout.putConstraint(SpringLayout.NORTH, evolveField, 6, SpringLayout.SOUTH, numberField);
+		appLayout.putConstraint(SpringLayout.EAST, evolveField, -49, SpringLayout.EAST, this);
 		attackField = new JTextField("0");
 		enhancementField = new JTextField("0");
 		healthField = new JTextField("0");
+		appLayout.putConstraint(SpringLayout.NORTH, numberField, 8, SpringLayout.SOUTH, healthField);
+		appLayout.putConstraint(SpringLayout.WEST, numberField, 0, SpringLayout.WEST, healthField);
+		appLayout.putConstraint(SpringLayout.NORTH, healthField, 27, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.EAST, healthField, -62, SpringLayout.EAST, this);
 
 		healthLabel = new JLabel("This pokemon's health is");
+		appLayout.putConstraint(SpringLayout.NORTH, healthLabel, 5, SpringLayout.NORTH, healthField);
+		appLayout.putConstraint(SpringLayout.EAST, healthLabel, -46, SpringLayout.WEST, healthField);
 		numberLabel = new JLabel("This pokemon's number is");
+		appLayout.putConstraint(SpringLayout.NORTH, numberLabel, 5, SpringLayout.NORTH, numberField);
+		appLayout.putConstraint(SpringLayout.EAST, numberLabel, 0, SpringLayout.EAST, healthLabel);
 		evolveLabel = new JLabel("This pokemon can evolve");
+		appLayout.putConstraint(SpringLayout.NORTH, evolveLabel, 5, SpringLayout.NORTH, evolveField);
+		appLayout.putConstraint(SpringLayout.EAST, evolveLabel, 0, SpringLayout.EAST, healthLabel);
 		attackLabel = new JLabel("This pokemon's attack level is ");
+		appLayout.putConstraint(SpringLayout.EAST, attackLabel, 0, SpringLayout.EAST, healthLabel);
 		enhanceLabel = new JLabel("This pokemon's enhancement level is");
+		appLayout.putConstraint(SpringLayout.NORTH, enhanceLabel, 174, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.SOUTH, attackLabel, -21, SpringLayout.NORTH, enhanceLabel);
+		appLayout.putConstraint(SpringLayout.EAST, enhanceLabel, 0, SpringLayout.EAST, healthLabel);
 		nameLabel = new JLabel("My name is");
-		imageLabel = new JLabel("pokemon goes here");
+		appLayout.putConstraint(SpringLayout.NORTH, nameLabel, 19, SpringLayout.SOUTH, enhanceLabel);
+		appLayout.putConstraint(SpringLayout.EAST, nameLabel, 0, SpringLayout.EAST, healthLabel);
+		imageLabel = new JLabel("");
 		changeButton = new JButton("Click here to change the pokevalues");
-		pokedexDropdown = new JComboBox(); //stub
+		appLayout.putConstraint(SpringLayout.SOUTH, changeButton, 0, SpringLayout.SOUTH, this);
+		appLayout.putConstraint(SpringLayout.EAST, changeButton, 0, SpringLayout.EAST, this);
+		pokedexDropdown = new JComboBox();
 
 		
 		setupPanel();
@@ -75,20 +95,11 @@ public class PokedexPanel extends JPanel
 	}
 	private void setuplayout()
 	{
-		appLayout.putConstraint(SpringLayout.WEST, pokedexDropdown, 33, SpringLayout.WEST, this);
-		appLayout.putConstraint(SpringLayout.SOUTH, pokedexDropdown, -96, SpringLayout.SOUTH, this);
-		appLayout.putConstraint(SpringLayout.NORTH, healthField, 6, SpringLayout.SOUTH, numberField);
-		appLayout.putConstraint(SpringLayout.WEST, healthField, 10, SpringLayout.WEST, numberField);
-		appLayout.putConstraint(SpringLayout.SOUTH, evolveField, -118, SpringLayout.SOUTH, this);
-		appLayout.putConstraint(SpringLayout.EAST, evolveField, -49, SpringLayout.EAST, this);
-		appLayout.putConstraint(SpringLayout.SOUTH, numberField, -226, SpringLayout.SOUTH, this);
-		appLayout.putConstraint(SpringLayout.EAST, numberField, -196, SpringLayout.EAST, this);
 		
 	}
 	private void setupPanel()
 	{
 		this.setLayout(appLayout);
-		this.add(pokedexDropdown);
 		this.add(healthField);
 		this.add(numberField);
 		this.add(evolveField);
@@ -105,8 +116,9 @@ public class PokedexPanel extends JPanel
 		this.add(changeButton);
 		this.add(pokedexDropdown);
 		
-		imageLabel.setVerticalTextPosition(JLabel.BOTTOM);
-		imageLabel.setHorizontalTextPosition(JLabel.CENTER);
+
+		
+		imageLabel.setIcon(pokemonIcon);
 		
 	}
 	private void setupDropdown()
