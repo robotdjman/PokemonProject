@@ -6,9 +6,12 @@ import javax.swing.JOptionPane;
 
 import java.io.*;
 
+import model.Eevee;
 import model.Meowth;
 import model.Pokemon;
 import model.Squirtle;
+import model.Umbreon;
+import model.Voltorb;
 import view.PokedexFrame;
 
 public class PokedexController
@@ -28,6 +31,10 @@ public class PokedexController
 	{
 		pokemonList.add(new Meowth());
 		pokemonList.add(new Squirtle());
+		pokemonList.add(new Eevee());
+		pokemonList.add(new Voltorb());
+		pokemonList.add(new Umbreon());
+		
 	}
 	public void start()
 	{
@@ -83,6 +90,7 @@ public class PokedexController
 			JOptionPane.showMessageDialog(appFrame, error.getMessage(), "File Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	/*
 	private void loadPokedex()
 	{
 		try
@@ -103,5 +111,30 @@ public class PokedexController
 		{
 			JOptionPane.showMessageDialog(appFrame, pokemonError.getMessage(), "Type Error", JOptionPane.ERROR_MESSAGE);
 		}
+	}
+	*/
+	public String[] getPokeData(int index)
+	{
+		String[] output = new String[5];
+		output[0] = Integer.toString(pokemonList.get(index).getAttackPoints());
+		output[1] = Double.toString(pokemonList.get(index).getEnhancementModifier());
+		output[2] = Integer.toString(pokemonList.get(index).getHealthPoints());
+		output[3] = pokemonList.get(index).getName();
+		output[4] = Boolean.toString(pokemonList.get(index).isCanEvolve());
+		return output;
+		
+	}
+	public ArrayList<Pokemon> getPokeList()
+	{
+		return pokemonList;
+	}
+	public Pokemon findInList(int String)
+	{
+		Pokemon output = null;
+		for(Pokemon poke : pokemonList)
+		{
+			poke 
+		}
+		return output;
 	}
 }
