@@ -133,7 +133,7 @@ public class PokedexController
 		Pokemon output = null;
 		for(Pokemon poke : pokemonList)
 		{
-			poke 
+			//poke 
 		}
 		return output;
 	}

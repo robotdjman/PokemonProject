@@ -192,7 +192,7 @@ public class PokedexPanel extends JPanel
 			public void actionPerformed(ActionEvent selection)
 			{
 				String name = pokedexDropdown.getSelectedItem().toString();
-				updateFields(pokeController.getPokeList().indexOf(name));
+				//updateFields(pokeController.getPokeList().indexOf(name));
 				changeImageDisplay(name);
 			}
 			
